@@ -7,11 +7,14 @@ const playerMessage = document.querySelector(".message"); //message to player af
 const playAgainButton = document.querySelector(".play-again"); //Play again button hidden until end of game
 
 //static word while building game
-const word = "magnolia";
+let word = "magnolia";
 
 //array that collects all the guessed letters
 const guessedLetters = [];
 // console.log(guessedLetters);
+
+//Remaining guesses counter
+let remainingGuesses = 8;
 
 //Function to display ● place-holders for each letter of word in play
 const placeholder = function (word) {
@@ -66,6 +69,7 @@ const makeGuess = function (guess) {
     else {
         guessedLetters.push(guess);
         displayGuess();
+        countGuesses(guess);
         updateProgress(guessedLetters);
     }
 };
@@ -98,6 +102,27 @@ const updateProgress = function (guessedLetters) {
     // console.log(revealWord);
     wordInProgress.innerText = revealWord.join("");
     checkWin();
+};
+
+//counldn't decide between guess or goodguess but this can be run only if guess is a good guess just like makeGuess()
+const countGuesses = function (guess) {
+    guess = guess.toUpperCase();
+    wordUpper = word.toUpperCase();
+    if (!wordUpper.includes(guess)) {
+        playerMessage.innerText = `Sorry the word does not contain ${guess}. Try again!`;
+        remainingGuesses -= 1;
+    } else {
+        playerMessage.innerText = `Good guess! The word contains ${guess}`;
+    }
+
+    if (remainingGuesses === 0 ) {
+        playerMessage.innerHTML = `<p class="highlight" > Game over! The word was ${word}</p>`;
+        remainingSpan.innerText = "0 guesses";
+    } else if (remainingGuesses === 1) {
+        remainingSpan.innerText = `${remainingGuesses} guess`;
+    } else {
+        remainingSpan.innerText = `${remainingGuesses} guesses`;
+    }  
 };
 
 const checkWin = function () {

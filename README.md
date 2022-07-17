@@ -99,6 +99,9 @@ First the word needs to be transformed into soemthing that can be compared to th
       revealWord.push("●");
     }
 ```
+## Counting Remaining Guesses
+I initially nested if statements into if statments trying to verify that ```remainingGuesses > 0``` before taking other actions. It is not necessary to do this and just makes it hard to debug. Also wasn't sure if ```guess``` or ```goodGuess``` should be used as the parameter for the countGuesses function. Went with using ```guess``` and then only running function if ```goodGuess``` exists just like I did with the makeGuess function.
+
 ## Check Win
 Was so caught up in comparing arrays that I over complicated this. All that needs to be done is to check the word string against the wordInProgress string with an ```===```.
 
