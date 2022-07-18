@@ -2,19 +2,32 @@ const lettersGuessedList = document.querySelector(".guessed-letters"); //unorder
 const guessButton = document.querySelector(".guess"); //button for submitting letter guesses
 const letterInput = document.querySelector(".letter"); //text input for a letter
 const wordInProgress = document.querySelector(".word-in-progress");
+const remaining = document.querySelector(".remaining")
 const remainingSpan = document.querySelector(".remaining span" ); //paragraph text with remaining guesses left
 const playerMessage = document.querySelector(".message"); //message to player after guess
 const playAgainButton = document.querySelector(".play-again"); //Play again button hidden until end of game
 
-//static word while building game
+//static word while building game 
 let word = "magnolia";
 
 //array that collects all the guessed letters
-const guessedLetters = [];
+let guessedLetters = [];
 // console.log(guessedLetters);
 
 //Remaining guesses counter
 let remainingGuesses = 8;
+
+const getWord = async function () {
+    const request = await fetch("https://gist.githubusercontent.com/skillcrush-curriculum/7061f1d4d3d5bfe47efbfbcfe42bf57e/raw/5ffc447694486e7dea686f34a6c085ae371b43fe/words.txt");
+    const words = await request.text();
+    const wordArray = words.split("\n");
+    const randomIndex = Math.floor(Math.random() * wordArray.length);
+    word = wordArray[randomIndex];
+    // console.log(word);
+    placeholder(word);
+};
+
+getWord();
 
 //Function to display ● place-holders for each letter of word in play
 const placeholder = function (word) {
@@ -27,11 +40,8 @@ const placeholder = function (word) {
     wordInProgress.innerText = placeholderLetters.join("");
 };
 
-placeholder(word);
-
-
 //Callback function for user clicking Guess button
-document.addEventListener("click", function(e) {
+guessButton.addEventListener("click", function(e) {
     e.preventDefault(); //stop screen from refreshing if user clicks twice
     playerMessage.innerText = ""; //clear previous player message
     const guess = letterInput.value; //capture letter guessed by user
@@ -43,6 +53,7 @@ document.addEventListener("click", function(e) {
         makeGuess(guess);
     }
 });
+
 
 // Input validator of user's guess. The arugument input is just a placehoder variable.
 // Validation takes place in the event handler.
@@ -75,7 +86,6 @@ const makeGuess = function (guess) {
 };
 
 // function that displays the guessed letters
-
 const displayGuess = function () {
     //clear items in list
     lettersGuessedList.innerHTML = "";
@@ -118,6 +128,7 @@ const countGuesses = function (guess) {
     if (remainingGuesses === 0 ) {
         playerMessage.innerHTML = `<p class="highlight" > Game over! The word was ${word}</p>`;
         remainingSpan.innerText = "0 guesses";
+        startOver();
     } else if (remainingGuesses === 1) {
         remainingSpan.innerText = `${remainingGuesses} guess`;
     } else {
@@ -129,10 +140,40 @@ const checkWin = function () {
     if (word.toUpperCase() === wordInProgress.innerText) {
         playerMessage.classList.add("win");
         playerMessage.innerHTML = `<p class="highlight" >Good Job! You have correctly guessed the word.</p>`;
+        startOver();
     }
 };
 
+const startOver = function () {
+    //hide guess button, remaining guesses text, guessed letters list
+    guessButton.classList.add("hide");
+    remaining.classList.add("hide");
+    lettersGuessedList.classList.add("hide");
 
+    //show the play again button
+    playAgainButton.classList.remove("hide");
+};
 
+//event handler for user clicking Play Again button
+playAgainButton.addEventListener("click", function() {
+    playerMessage.classList.remove("win");
+    playerMessage.innerText = "";
 
+    guessedLetters = [];
+    lettersGuessedList.innerHTML = "";
 
+    remainingGuesses = 8;
+    remainingSpan.innerHTML = `${remainingGuesses} guesses`;
+    
+    //get new word
+    getWord();
+
+//show guess button, remaining guesses text, guessed letters list
+    guessButton.classList.remove("hide");
+    remaining.classList.remove("hide");
+    lettersGuessedList.classList.remove("hide");
+
+//hide the play again button
+    playAgainButton.classList.add("hide");
+
+});

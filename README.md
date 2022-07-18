@@ -105,6 +105,10 @@ I initially nested if statements into if statments trying to verify that ```rema
 ## Check Win
 Was so caught up in comparing arrays that I over complicated this. All that needs to be done is to check the word string against the wordInProgress string with an ```===```.
 
+## Generating Words
+Used an ansync function to get random words for the game. Tidbits to remember are ```const wordArray = words.split("\n");``` takes a long text list of words and uses the line break \n as a deliminator to make an array. To get a random word use ```Math.floor(Math.random()``` multiplied by the length of the wordArray to get an random index and hence a random word from the wordArray. Be sure to trim off any white spaces by using trim().
 
+## Play Again
+One thing that tripped me up with the event handler for the Play Again button was there being no need to use e as parameter, ie ```function(e)```. This event is not storing any data or user response and as soon as it is clicked the button dissapears so the ```e.preventDefault()``` is not needed. This button really is only refresh on game
 
 
