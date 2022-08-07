@@ -8,7 +8,7 @@ const playerMessage = document.querySelector(".message"); //message to player af
 const playAgainButton = document.querySelector(".play-again"); //Play again button hidden until end of game
 
 //static word while building game 
-let word = "magnolia";
+// let word = "magnolia";
 
 //array that collects all the guessed letters
 let guessedLetters = [];
@@ -17,17 +17,33 @@ let guessedLetters = [];
 //Remaining guesses counter
 let remainingGuesses = 8;
 
-const getWord = async function () {
-    const request = await fetch("https://gist.githubusercontent.com/skillcrush-curriculum/7061f1d4d3d5bfe47efbfbcfe42bf57e/raw/5ffc447694486e7dea686f34a6c085ae371b43fe/words.txt");
-    const words = await request.text();
-    const wordArray = words.split("\n");
-    const randomIndex = Math.floor(Math.random() * wordArray.length);
-    word = wordArray[randomIndex];
-    // console.log(word);
-    placeholder(word);
+// const getWord = async function () {
+//     const request = await fetch("https://gist.githubusercontent.com/skillcrush-curriculum/7061f1d4d3d5bfe47efbfbcfe42bf57e/raw/5ffc447694486e7dea686f34a6c085ae371b43fe/words.txt");
+//     const words = await request.text();
+//     const wordArray = words.split("\n");
+//     const randomIndex = Math.floor(Math.random() * wordArray.length);
+//     word = wordArray[randomIndex];
+//     // console.log(word);
+//     placeholder(word);
+// };
+
+// getWord();
+
+/* Attempted to use an API to source cocktails names. This API uses php. 
+The json chrome extension reads the random.php file just fine but it won't work in the app.
+Throws a CORS error and wants the api to be in http or https to fetch data */
+
+const getCocktail = async function () {
+    const response = await fetch(
+        "www.thecocktaildb.com/api/json/v1/1/random.php"
+    );
+    const data = await response.json();
+    console.log(data);
 };
 
-getWord();
+getCocktail();
+
+
 
 //Function to display ● place-holders for each letter of word in play
 const placeholder = function (word) {

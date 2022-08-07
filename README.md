@@ -1,7 +1,5 @@
 # Retro Guess the Word Game
 
-[Background image](https://unsplash.com/photos/KIdkIGmYdBM) Photo by [Jason Leung](https://unsplash.com/@ninjason?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/collections/QNFg7DVzM2A/bar?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
-
 Partially doing this project again for a good review of vanilla JS but also doing it to restyle it use a different word database.
 
 There are quite a few things that need to happen before a user's guess is accepted and counted towards either the word or remainin guesses. As a dev you want validate everything is good before running a guess thru a function/process. It was challenging for me to figure out what to do first and how to make the functions dependant on one another. I don't think there is a right way but some ways may not be as effiecent.
@@ -122,6 +120,14 @@ Was so caught up in comparing arrays that I over complicated this. All that need
 
 Used an ansync function to get random words for the game. Tidbits to remember are `const wordArray = words.split("\n");` takes a long text list of words and uses the line break \n as a deliminator to make an array. To get a random word use `Math.floor(Math.random()` multiplied by the length of the wordArray to get an random index and hence a random word from the wordArray. Be sure to trim off any white spaces by using trim().
 
+## API
+
+www.thecocktaildb.com/api/json/v1/1/random.php
+
 ## Play Again
 
 One thing that tripped me up with the event handler for the Play Again button was there being no need to use e as parameter, ie `function(e)`. This event is not storing any data or user response and as soon as it is clicked the button dissapears so the `e.preventDefault()` is not needed. This button really is only refresh on game
+
+## Graphics
+
+I made the graphics in Canva
