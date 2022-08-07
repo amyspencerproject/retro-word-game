@@ -11,11 +11,13 @@ body {
   font-style: normal;
   font-size: 20px;
   line-height: 150%;
-  background-color: #dff6f6;
-  background-image: url("../img/bg.png");
-  background-size: 800px;
-  background-repeat: repeat;
-  color: #305050;
+  background-color: #4b2215;
+  /* background-image: url("../img/lounge.jpg"); */
+  background-image:  url(../img/martini.png), url(../img/glass.png);
+  background-size: 30%;
+  background-position: bottom left, bottom right ;
+  background-repeat: no-repeat, no-repeat;
+  color: #e96822;
 }
 
 .logo {
