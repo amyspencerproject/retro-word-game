@@ -29,16 +29,15 @@ let remainingGuesses = 8;
 
 // getWord();
 
-/* Attempted to use an API to source cocktails names. This API uses php. 
-The json chrome extension reads the random.php file just fine but it won't work in the app.
-Throws a CORS error and wants the api to be in http or https to fetch data */
 
 const getCocktail = async function () {
     const response = await fetch(
-        "www.thecocktaildb.com/api/json/v1/1/random.php"
+        " https://cors-anywhere.herokuapp.com/www.thecocktaildb.com/api/json/v1/1/random.php"
     );
     const data = await response.json();
-    console.log(data);
+    console.log(data.drinks[0].strDrink);
+    cocktail = data.drinks[0].strDrink;
+    placeholder(cocktail);
 };
 
 getCocktail();

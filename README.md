@@ -122,7 +122,12 @@ Used an ansync function to get random words for the game. Tidbits to remember ar
 
 ## API
 
-www.thecocktaildb.com/api/json/v1/1/random.php
+Attempted to use an API to source cocktails names. This API uses php.
+The json chrome extension reads the random.php file just fine but it won't work in the local enviromment.
+Throws a CORS error and wants the api to be in http or https to fetch data.
+This is the API: www.thecocktaildb.com/api/json/v1/1/random.php
+
+Used cors-anywhere.herokuapp.com to overcome the CORS error I kept getting when fetching data from the API. Not sure how long this solution will work because this [app](https://github.com/Rob--W/cors-anywhere/issues/301) made me apply for temporary access???
 
 ## Play Again
 
