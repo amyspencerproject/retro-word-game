@@ -16,21 +16,10 @@ let remainingGuesses = 8;
 
 const getCocktail = async function () {
     const response = await fetch(
-        // added https://cors-anywhere.herokuapp.com/ to translate endpoint. See ReadMe for details
-        "https://cors-anywhere.herokuapp.com/www.thecocktaildb.com/api/json/v1/1/random.php"
-    //    "www.thecocktaildb.com/api/json/v1/1/random.php"
+       "https://www.thecocktaildb.com/api/json/v1/1/random.php"
     );
     const data = await response.json();
     
-    // const parsedData = JSON.parse(data);
-    // console.log(parsedData);
-    // console.log(JSON.parse(data));
-
-    // copied data object from json chrome extension parsed it and stored in raw and it works
-    const raw = {"drinks":[{"idDrink":"178362","strDrink":"Vodka Slime","strDrinkAlternate":null,"strTags":null,"strVideo":null,"strCategory":"Cocktail","strIBA":null,"strAlcoholic":"Alcoholic","strGlass":"Highball glass","strInstructions":"Fill glass with ice. Add vodka, 7-up then finish with the lime juice.","strInstructionsES":null,"strInstructionsDE":null,"strInstructionsFR":null,"strInstructionsIT":null,"strInstructionsZH-HANS":null,"strInstructionsZH-HANT":null,"strDrinkThumb":"https:\/\/www.thecocktaildb.com\/images\/media\/drink\/apex461643588115.jpg","strIngredient1":"Sprite","strIngredient2":"Lime Juice","strIngredient3":"Vodka","strIngredient4":null,"strIngredient5":null,"strIngredient6":null,"strIngredient7":null,"strIngredient8":null,"strIngredient9":null,"strIngredient10":null,"strIngredient11":null,"strIngredient12":null,"strIngredient13":null,"strIngredient14":null,"strIngredient15":null,"strMeasure1":"1 cup","strMeasure2":"1\/2 shot","strMeasure3":"1 1\/2 shot","strMeasure4":"","strMeasure5":"","strMeasure6":"","strMeasure7":"","strMeasure8":null,"strMeasure9":null,"strMeasure10":null,"strMeasure11":null,"strMeasure12":null,"strMeasure13":null,"strMeasure14":null,"strMeasure15":null,"strImageSource":"https:\/\/giggledam.com\/wp-content\/uploads\/2020\/07\/4909D8D9-F78E-4391-B7A2-B383CA57D69F.jpeg","strImageAttribution":null,"strCreativeCommonsConfirmed":"No","dateModified":null}]};
-    // console.log(raw);
-    // console.log(raw.drinks[0].strDrink)
-
     console.log(data.drinks[0].strDrink);
     cocktail = data.drinks[0].strDrink;
     placeholder(cocktail);
