@@ -64,8 +64,11 @@ h1 {
 
 .word-in-progress {
   letter-spacing: 15px;
+  line-height: 2em;
   color: #28bdbd;
   font-size: 30px;
+  text-align: center;
+  width: 45%;
 }
 
 .guessed-letters {
