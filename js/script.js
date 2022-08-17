@@ -55,13 +55,19 @@ guessButton.addEventListener("click", function(e) {
 // Input validator of user's guess. The arugument input is just a placehoder variable.
 // Validation takes place in the event handler.
 const validateInput = function(input) {
-    const acceptedLetter = /[a-zA-Z]/; //Regular expression 
+    const acceptedLetter = /[a-zA-Z]/; //Regular expression
+    const acceptedNumber = /^[0-9]+$/;
+    // const acceptedSymbol = /!/ /$/ /-/; 
     if (input.length === 0) {
-        playerMessage.innerText="Please enter a single letter as a guess";
+        playerMessage.innerText="Please enter a single letter, number, or symbol as a guess";
     } else if (input.length > 1 ) {
-        playerMessage.innerText = "Only enter a single letter as a guess";
+        playerMessage.innerText = "Only enter a single letter, number, or symbol as a guess";
     } else if (!input.match(acceptedLetter)) {
         playerMessage.innerText = "Guess a single letter from A to Z";
+    } else if (!input.match(acceptedNumber)) {
+        playerMessage.innerText = "Only enter a single letter, number, or symbol as a guess";
+    } else if (!input.match(acceptedSymbol)) {
+        playerMessage.innerText = "Only enter a single letter, number, or symbol as a guess";
     } else {
         return input
     }
