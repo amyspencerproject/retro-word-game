@@ -70,6 +70,11 @@ The variable input is just a dummy varaible. Anything variable can be run throug
     };
 ```
 
+### Regular Expressions or Regex
+
+Great resource for regular expressions [Regex](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet)
+The regular expession I used `/[a-zA-Z0-9\W]/` includes lower and uppercase letters `a-zA-Z`, numbers `0-9`, and non-word characters from the Latin alphabet `\W`.
+
 ## Storing/Comparing a Valid Guess
 
 Once a guess has been validated then it needs to be case homoginized. Remember that JS is case sensitive. This is why the regular expression is `/[a-zA-Z]/` After changing to upper or lower case the guess needs to be compared to prevously guessed letters. If the letter has already been guessed then let the user know. If not then store the guess in the guessed letters array.

@@ -46,28 +46,21 @@ guessButton.addEventListener("click", function(e) {
     // console.log(guess);
     letterInput.value = ""; //clear letter from screen
     goodGuess = validateInput(guess);
+    console.log(goodGuess);
     //after validation guess can move to being capitalized, checked against array, and stored if okay
     if (goodGuess) {
         makeGuess(guess);
     }
 });
 
-// Input validator of user's guess. The arugument input is just a placehoder variable.
-// Validation takes place in the event handler.
 const validateInput = function(input) {
-    const acceptedLetter = /[a-zA-Z]/; //Regular expression
-    const acceptedNumber = /^[0-9]+$/;
-    // const acceptedSymbol = /!/ /$/ /-/; 
+    const acceptedCharacter = /[a-zA-Z0-9\W]/ ; //Regular expression to match guess with letters, numbers, & symbols
     if (input.length === 0) {
-        playerMessage.innerText="Please enter a single letter, number, or symbol as a guess";
+        playerMessage.innerText="Please enter a single letter as a guess";
     } else if (input.length > 1 ) {
-        playerMessage.innerText = "Only enter a single letter, number, or symbol as a guess";
-    } else if (!input.match(acceptedLetter)) {
-        playerMessage.innerText = "Guess a single letter from A to Z";
-    } else if (!input.match(acceptedNumber)) {
-        playerMessage.innerText = "Only enter a single letter, number, or symbol as a guess";
-    } else if (!input.match(acceptedSymbol)) {
-        playerMessage.innerText = "Only enter a single letter, number, or symbol as a guess";
+        playerMessage.innerText = "Only enter a single letter as a guess";
+    } else if (!input.match(acceptedCharacter)) {
+        playerMessage.innerText = "Guess a single letter from A to Z or number 0 to 9";
     } else {
         return input
     }
@@ -129,7 +122,7 @@ const countGuesses = function (guess) {
     }
 
     if (remainingGuesses === 0 ) {
-        playerMessage.innerHTML = `<p class="highlight" > Game over! The cocktail was ${word}</p>`;
+        playerMessage.innerHTML = `<p class="highlight" >Game over! The cocktail was ${word}</p>`;
         remainingSpan.innerText = "0 guesses";
         startOver();
     } else if (remainingGuesses === 1) {
