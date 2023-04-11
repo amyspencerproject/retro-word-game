@@ -14,16 +14,16 @@ body {
   line-height: 150%;
   background-color: #4b2215;
   /* background-image: url("../img/lounge.jpg"); */
-  background-image:  url(../img/martini.png), url(../img/glass.png);
+  background-image: url(../img/martini.png), url(../img/glass.png);
   background-size: 30%;
-  background-position: top 45% left, top 45% right ;
+  background-position: top 45% left, top 45% right;
   background-repeat: no-repeat, no-repeat;
   color: #f5620c;
 }
 
 .logo {
   width: 70%;
-  max-width: 484px;
+  max-width: 30.25rem;
 }
 
 h1 {
@@ -33,14 +33,14 @@ h1 {
   font-family: "Unlock", sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 44px;
+  font-size: 2.75rem;
   text-align: center;
 }
 
 .container {
   background: radial-gradient(50% 50% at 50% 50%,
-    rgba(167, 237, 237, 0.3) 0%,
-    rgba(156, 226, 226, 0) 100%);
+      rgba(167, 237, 237, 0.3) 0%,
+      rgba(156, 226, 226, 0) 100%);
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -70,7 +70,7 @@ footer {
 }
 
 .word-in-progress {
-  letter-spacing: 15px;
+  letter-spacing: 1rem;
   line-height: 2em;
   color: #1ed5c3;
   font-size: 30px;
@@ -93,7 +93,7 @@ footer {
 }
 
 .remaining {
-  font-size: 1.25em;
+  font-size: 1.25rem;
 }
 
 .guess-form {
@@ -148,6 +148,19 @@ input:focus {
   transform: scale(0.98);
   background: brightness(0.3);
   color: white;
+}
+
+/* recipe display */
+.recipe-card {
+  background: linear-gradient(95deg, #ffe2d6, white);
+  border-radius: 20px;
+  padding: 2rem;
+  margin-top: 2rem;
+  width: 75%;
+}
+
+img {
+  width: 45%;
 }
 
 /* animatied background */

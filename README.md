@@ -136,6 +136,22 @@ Used cors-anywhere.herokuapp.com to overcome the CORS error I kept getting when 
 
 If you want to get this app to work you have to visit [temporary permission](https://cors-anywhere.herokuapp.com/corsdemo)
 
+Did all the above crazy complicated stuff to fix and simple probelm. Initially I had 
+```
+    const response = await fetch(
+        "www.thecocktaildb.com/api/json/v1/1/random.php"
+    ); 
+```
+when I should have had 
+```
+    const response = await fetch(
+        "https://www.thecocktaildb.com/api/json/v1/1/random.php"
+    );
+```
+leaving off the https is an obvious noobie mistake 😆
+
+Key take away for me from this was if the problem isn't common and the solution isn't simple you have done something fundementally wrong.
+
 ## Play Again
 
 One thing that tripped me up with the event handler for the Play Again button was there being no need to use e as parameter, ie `function(e)`. This event is not storing any data or user response and as soon as it is clicked the button dissapears so the `e.preventDefault()` is not needed. This button really is only refresh on game
@@ -143,3 +159,16 @@ One thing that tripped me up with the event handler for the Play Again button wa
 ## Graphics
 
 I made the graphics in Canva
+
+## Displaying Recipe
+
+Wanted to have the cocktail recipe display after the correct name is guessed. 
+
+Breakdown of what needs to be done to accomplish this.
+1. get the name of the cocktail, recipe instructions, ingredients, and image from data pulled via API
+2. display this only if the user wins the game 
+3. have an html/css structure that grabs only available data
+2. clear recipe if user wants to play another game
+
+Looked at how Serious Eats displays their ingredients and gained a lot of insight on what might be possible for pulling the measurments and items for existing ingredients. The ``<span>`` elelments seem to have "true" constraints in the CSS.
+![HTML of dynamic ingredients list](ingredients-list-html.png) ![Browser view of ingredients list](/ingredients-list-web.png)

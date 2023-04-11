@@ -1,6 +1,7 @@
 const lettersGuessedList = document.querySelector(".guessed-letters"); //unordered list of letters user has guessed
 const guessButton = document.querySelector(".guess"); //button for submitting letter guesses
 const letterInput = document.querySelector(".letter"); //text input for a letter
+const guessInputLabel = document.querySelector("letter-label"); //label for letter input
 const wordInProgress = document.querySelector(".word-in-progress");
 const remaining = document.querySelector(".remaining")
 const remainingSpan = document.querySelector(".remaining span" ); //paragraph text with remaining guesses left
@@ -121,17 +122,29 @@ const countGuesses = function (guess) {
         playerMessage.innerText = `Good guess! This cocktail contains ${guess}`;
     }
 
-    if (remainingGuesses === 0 ) {
-        playerMessage.innerHTML = `<p class="highlight" >Game over! The cocktail was ${word}</p>`;
-        remainingSpan.innerText = "0 guesses";
+    if (remainingGuesses === 0) {
+        // playerMessage.innerText = `Game over! The cocktail was ${word}`;
+        // playerMessage.innerHTML = `<p class="highlight" >Game over! The cocktail was ${word}</p>`;
+        // playerMessage.innerText = `player message at 0 guesses`;
+        // remainingSpan.innerText = "0 guesses";
         startOver();
+        console.log("guesses equal zero is working")
     } else if (remainingGuesses === 1) {
         remainingSpan.innerText = `${remainingGuesses} guess`;
     } else {
         remainingSpan.innerText = `${remainingGuesses} guesses`;
     }  
 };
+//simple win message and update
+// const checkWin = function () {
+//     if (cocktail.toUpperCase() === wordInProgress.innerText) {
+//         playerMessage.classList.add("win");
+//         playerMessage.innerHTML = `<p class="highlight" >Cheers! You have correctly guessed the cocktail.</p>`;
+//         startOver();
+//     }
+// };
 
+//win message with recipe and image
 const checkWin = function () {
     if (cocktail.toUpperCase() === wordInProgress.innerText) {
         playerMessage.classList.add("win");
@@ -145,6 +158,8 @@ const startOver = function () {
     guessButton.classList.add("hide");
     remaining.classList.add("hide");
     lettersGuessedList.classList.add("hide");
+    letterInput.classList.add("hide");
+    guessInputLabel.classList.add("hide");
 
     //show the play again button
     playAgainButton.classList.remove("hide");
@@ -161,15 +176,16 @@ playAgainButton.addEventListener("click", function() {
     remainingGuesses = 8;
     remainingSpan.innerHTML = `${remainingGuesses} guesses`;
     
-    //get new word
+    //get new cocktail
     getCocktail();
 
 //show guess button, remaining guesses text, guessed letters list
     guessButton.classList.remove("hide");
     remaining.classList.remove("hide");
     lettersGuessedList.classList.remove("hide");
+    letterInput.classList.remove("hide");
+    guessInputLabel.classList.remove("hide");
 
 //hide the play again button
     playAgainButton.classList.add("hide");
-
 });
