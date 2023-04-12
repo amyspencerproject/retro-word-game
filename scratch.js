@@ -9,3 +9,6 @@
     at countGuesses (script.js:129:9)
     at makeGuess (script.js:80:9)
     at HTMLButtonElement.<anonymous> (script.js:53:9)
+
+    ${cocktail}
+    ${}

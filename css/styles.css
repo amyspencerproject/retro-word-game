@@ -1,3 +1,4 @@
+/* ===================== Customized Styles (mobile-first) =========================== */
 * {
   box-sizing: border-box;
 }
@@ -35,6 +36,15 @@ h1 {
   font-weight: normal;
   font-size: 2.75rem;
   text-align: center;
+}
+
+h2 {
+  color: #ff914d;
+}
+
+h3,
+h4 {
+  text-decoration: underline;
 }
 
 .container {
@@ -150,20 +160,39 @@ input:focus {
   color: white;
 }
 
-/* recipe display */
+/* ===================== Recipe Card =========================== */
 .recipe-card {
   background: linear-gradient(95deg, #ffe2d6, white);
   border-radius: 20px;
+  color: darkslategrey;
   padding: 2rem;
   margin-top: 2rem;
   width: 75%;
 }
 
-img {
-  width: 45%;
+.recipe-container {
+  display: flex;
+  flex-flow: row wrap;
+  width: 90%;
 }
 
-/* animatied background */
+.recipe-text {
+  /* color: #ff914d; */
+  color: darkslategrey;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+}
+
+.recipe-thumbnail {
+  display: block;
+  width: 100%;
+}
+
+.recipe-image {
+  width: 80%;
+}
+
+/* ===================== animatied background =========================== */
 .win {
   padding: 0 1em;
   background: linear-gradient(-45deg, #ff914d, #f5620c);
@@ -182,5 +211,21 @@ img {
 
   100% {
     background-position: 0% 50%;
+  }
+}
+
+/* ===================== Media Queries =========================== */
+
+/***** Tablet display larger than 768 px wide *****/
+
+@media only screen and (min-width: 768px) {}
+
+/***** Desktop display larger than 1200 px wide *****/
+
+@media only screen and (min-width: 1200px) {
+  .recipe-container {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 90%;
   }
 }

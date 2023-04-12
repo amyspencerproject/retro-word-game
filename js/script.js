@@ -144,7 +144,7 @@ const countGuesses = function (guess) {
 //     }
 // };
 
-//win message with recipe and image
+//win message with recipe and image 
 const checkWin = function () {
     if (cocktail.toUpperCase() === wordInProgress.innerText) {
         playerMessage.classList.add("win");
