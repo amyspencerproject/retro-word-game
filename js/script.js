@@ -1,10 +1,10 @@
 const lettersGuessedList = document.querySelector(".guessed-letters"); //unordered list of letters user has guessed
 const guessButton = document.querySelector(".guess"); //button for submitting letter guesses
-const letterInput = document.querySelector(".letter"); //text input for a letter
-const guessInputLabel = document.querySelector("letter-label"); //label for letter input
-const wordInProgress = document.querySelector(".word-in-progress");
-const remaining = document.querySelector(".remaining")
-const remainingSpan = document.querySelector(".remaining span" ); //paragraph text with remaining guesses left
+const letterInput = document.querySelector(".letter"); //form input for guessing a letter
+const guessInputLabel = document.querySelector(".letter-label"); //label for form input
+const wordInProgress = document.querySelector(".word-in-progress"); //paragraph that displays the word in progress
+const remaining = document.querySelector(".remaining") //paragraph that displays remaining guesses
+const remainingSpan = document.querySelector(".remaining span" ); //span with the number remaining guesses
 const playerMessage = document.querySelector(".message"); //message to player after guess
 const playAgainButton = document.querySelector(".play-again"); //Play again button hidden until end of game
 
@@ -24,6 +24,7 @@ const getCocktail = async function () {
     console.log(data.drinks[0].strDrink);
     cocktail = data.drinks[0].strDrink;
     placeholder(cocktail);
+    // playAgainButton.classList.remove("hide");
 };
 
 getCocktail();
@@ -47,7 +48,7 @@ guessButton.addEventListener("click", function(e) {
     // console.log(guess);
     letterInput.value = ""; //clear letter from screen
     goodGuess = validateInput(guess);
-    console.log(goodGuess);
+    // console.log(goodGuess);
     //after validation guess can move to being capitalized, checked against array, and stored if okay
     if (goodGuess) {
         makeGuess(guess);
@@ -123,10 +124,9 @@ const countGuesses = function (guess) {
     }
 
     if (remainingGuesses === 0) {
-        // playerMessage.innerText = `Game over! The cocktail was ${word}`;
-        // playerMessage.innerHTML = `<p class="highlight" >Game over! The cocktail was ${word}</p>`;
-        // playerMessage.innerText = `player message at 0 guesses`;
-        // remainingSpan.innerText = "0 guesses";
+        playerMessage.innerText = `Game over! The cocktail was ${cocktail}`;
+        playerMessage.innerHTML = `<p class="highlight" >Game over! The cocktail was ${cocktail}</p>`;
+        remainingSpan.innerText = "0 guesses";
         startOver();
         console.log("guesses equal zero is working")
     } else if (remainingGuesses === 1) {
@@ -160,8 +160,7 @@ const startOver = function () {
     lettersGuessedList.classList.add("hide");
     letterInput.classList.add("hide");
     guessInputLabel.classList.add("hide");
-
-    //show the play again button
+    //show playagain button
     playAgainButton.classList.remove("hide");
 };
 
@@ -179,13 +178,13 @@ playAgainButton.addEventListener("click", function() {
     //get new cocktail
     getCocktail();
 
-//show guess button, remaining guesses text, guessed letters list
+    //show guess button, remaining guesses text, guessed letters list
     guessButton.classList.remove("hide");
     remaining.classList.remove("hide");
     lettersGuessedList.classList.remove("hide");
     letterInput.classList.remove("hide");
     guessInputLabel.classList.remove("hide");
 
-//hide the play again button
+    //hide the play again button
     playAgainButton.classList.add("hide");
 });

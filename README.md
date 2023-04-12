@@ -160,6 +160,10 @@ One thing that tripped me up with the event handler for the Play Again button wa
 
 I made the graphics in Canva
 
+## Favicon
+
+Made a favicon in Canva at a 550px X 550px size and save as a .png file. I think that this may need to be changed to a .io file to ensure that it can be viewed across browsers. I am also unclear on the size requirements for a favicon. Quick search returns that it should be 16px or 32 px? 
+
 ## Displaying Recipe
 
 Wanted to have the cocktail recipe display after the correct name is guessed. 
